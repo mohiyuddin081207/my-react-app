@@ -61,7 +61,7 @@ export default function App() {
        padding: '20px',
        backgroundColor: '#111',
      color: '#fff', minHeight: '100vh' }}>
-      <h1>🔴 Mars Weather Command</h1>
+      <h1>🔴 Mars Weather Update</h1>
       
       {/* Main Layout Grid */}
       <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
