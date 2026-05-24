@@ -63,21 +63,21 @@ export default function App() {
      color: '#fff', minHeight: '100vh' }}>
       <h1>🔴 Mars Weather Update</h1>
       
-      {/* Main Layout Grid */}
+
       <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
         
-        {/* LEFT COLUMN: THE CITY SELECTOR BUTTONS */}
+     
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: '1' }}>
           <h3>Select Base</h3>
           {marsData.map((city) => (
             <button
               key={city.id}
-              // When clicked, update the state variable with this city's ID
+           
               onClick={() => setSelectedId(city.id)}
               style={{
                 padding: '12px',
                 textAlign: 'left',
-                // If this button matches our state, paint it with its unique theme color!
+            
                 backgroundColor: city.id === selectedId ? city.theme : '#222',
                 color: '#fff',
                 border: 'none',
@@ -91,7 +91,7 @@ export default function App() {
         </div>
 
         {/* RIGHT COLUMN: THE DASHBOARD DISPLAY */}
-        {/* The border color dynamically switches based on the current city's theme! */}
+      
         <div style={{ 
           flex: '2', 
           border: `3px solid ${currentCity.theme}`, 
