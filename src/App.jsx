@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// 1. The Raw Data Array (Your simplified db.json contents directly in the file)
+
 const marsData = [
   {
     "id": "olympus-base",
@@ -9,7 +9,8 @@ const marsData = [
     "temp": "-55°C",
     "dustLevel": "Moderate",
     "advisory": "Solar Flare Alert: High UV index. Stay indoors between 0600 and 1400 Sols.",
-    "theme": "#E2583E"
+    "theme": "#ac2b11",
+    "background":"https://lowell.edu/wp-content/uploads/2020/09/maxresdefault-1024x576.jpg"
   },
   {
     "id": "acidalia-hub",
@@ -18,7 +19,8 @@ const marsData = [
     "temp": "-80°C",
     "dustLevel": "Extreme",
     "advisory": "Dust Storm incoming. Secure all pressurized rovers and toggle static shields.",
-    "theme": "#5A6266"
+    "theme": "#5A6266",
+    "background":"https://science.iirs.gov.in/wp-content/uploads/2024/06/dust_storm.png"
   },
   {
     "id": "valles-biodome",
@@ -27,7 +29,8 @@ const marsData = [
     "temp": "-15°C",
     "dustLevel": "Low",
     "advisory": "Atmospheric pressure stable. Enjoy the green sector walk paths.",
-    "theme": "#2E7D32"
+    "theme": "#2E7D32",
+    "background":"https://media.architecturaldigest.com/photos/57a0df91b6c434ab487bc255/16:9/w_1280,c_limit/mars-habitats-01.jpeg"
   },
   {
     "id": "utopia-plains",
@@ -36,19 +39,28 @@ const marsData = [
     "temp": "-65°C",
     "dustLevel": "Low",
     "advisory": "Subsurface ice mining operation active. Watch out for heavy machinery traffic.",
-    "theme": "#4A90E2"
+    "theme": "#4A90E2",
+    "background":"https://img-v3.deepdreamgenerator.com/4139678/md_ujwsqt_fd4c80cb6284ac0589a8766d665fd0b8fafa7942.jpg"
   }
 ];
 
 export default function App() {
-  // 2. STATE: We only track the ID of the selected city. It starts with "olympus-base".
+  
+
+
   const [selectedId, setSelectedId] = useState("olympus-base");
 
-  // 3. REACTION: Find the city object matching that ID so we can display its info.
-  const currentCity = marsData.find(city => city.id === selectedId);
+     const currentCity = marsData.find(city => city.id === selectedId);
 
   return (
-    <div style={{ fontFamily: 'sans-serif', padding: '20px', backgroundColor: '#111', color: '#fff', minHeight: '100vh' }}>
+    <div style={{
+      backgroundImage:`url('${currentCity.background}')`, 
+       backgroundSize: 'cover',      
+       backgroundAttachment: 'fixed',
+       fontFamily: 'sans-serif',
+       padding: '20px',
+       backgroundColor: '#111',
+     color: '#fff', minHeight: '100vh' }}>
       <h1>🔴 Mars Weather Command</h1>
       
       {/* Main Layout Grid */}
@@ -87,17 +99,17 @@ export default function App() {
           padding: '20px',
           backgroundColor: '#1a1a1a'
         }}>
-          <h2 style={{ color: currentCity.theme, margin: '0 0 10px 0' }}>{currentCity.name}</h2>
-          <p><strong>Region:</strong> {currentCity.region}</p>
-          <p><strong>Temperature:</strong> {currentCity.temp}</p>
-          <p><strong>Dust Level:</strong> {currentCity.dustLevel}</p>
+           <h2 style={{ color: currentCity.theme, margin: '10px 10px 10px 0' }}>{currentCity.name}</h2>
+           <p><strong>Region:</strong> {currentCity.region}</p>
+           <p><strong>Temperature:</strong> {currentCity.temp}</p>
+            <p><strong>Dust Level:</strong> {currentCity.dustLevel}</p>
           
-          {/* LIFE SUPPORT ADVISORY BOX */}
+
           <div style={{ 
             marginTop: '20px', 
             padding: '15px', 
-            backgroundColor: `${currentCity.theme}22`, // Adding transparency
-            borderLeft: `5px solid ${currentCity.theme}` 
+            backgroundColor: `${currentCity.theme}22`, 
+            border: `5px solid ${currentCity.theme}` 
           }}>
             <h4 style={{ margin: '0 0 5px 0', color: currentCity.theme }}>⚠️ SAFETY ADVISORY</h4>
             <p style={{ margin: 0 }}>{currentCity.advisory}</p>
